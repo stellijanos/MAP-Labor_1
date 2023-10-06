@@ -44,7 +44,8 @@ public class Grades {
 
     public int sumOfArrayElements(ArrayList<Integer> array) {
         int sum = 0;
-        for (Integer element: array) sum += element;
+        for (Integer element: array)
+            sum += element;
         return sum;
     }
 
@@ -58,6 +59,14 @@ public class Grades {
         for (Integer grade: grades)
             result.add(round(grade));
         return result;
+    }
+
+    public int maximalRoundedGrade(ArrayList<Integer> grades) {
+        int maximalRound = 0;
+        for (Integer grade: grades)
+            if (maximalRound < round(grade) - grade)
+                maximalRound = round(grade) - grade;
+        return maximalRound;
     }
 }
 
