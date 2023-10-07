@@ -17,7 +17,7 @@ public class Grades {
      * @return rounded up grade if it ends with 3, 4, 8 or 9
      */
     public int round(int grade) {
-        return grade - nextMultipleOf5(grade) < 3 ? nextMultipleOf5(grade) : grade;
+        return  grade != 100 && nextMultipleOf5(grade) - grade < 3 ? nextMultipleOf5(grade) : grade;
     }
 
     /**
@@ -35,7 +35,7 @@ public class Grades {
      * @return filtered grades by insuficiency
      */
     public ArrayList<Integer> insuficientGrades(ArrayList<Integer> grades) {
-        ArrayList<Integer> result = new ArrayList<Integer>();
+        ArrayList<Integer> result = new ArrayList<>();
         for (Integer grade: grades)
             if (isInsuficient(grade))
                 result.add(grade);
@@ -55,7 +55,7 @@ public class Grades {
 
 
     public ArrayList<Integer> roundedGrades(ArrayList<Integer> grades) {
-        ArrayList<Integer> result = new ArrayList<Integer>();
+        ArrayList<Integer> result = new ArrayList<>();
         for (Integer grade: grades)
             result.add(round(grade));
         return result;
