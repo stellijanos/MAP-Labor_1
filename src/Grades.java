@@ -50,9 +50,8 @@ public class Grades {
     }
 
     public int averageGrade(ArrayList<Integer> grades) {
-        return sumOfArrayElements(grades) / grades.size();
+        return grades.isEmpty() ? 0 : sumOfArrayElements(grades) / grades.size();
     }
-
 
     public ArrayList<Integer> roundedGrades(ArrayList<Integer> grades) {
         ArrayList<Integer> result = new ArrayList<>();

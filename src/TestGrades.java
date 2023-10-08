@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class TestGrades {
     public void runTests() {
@@ -10,6 +9,7 @@ public class TestGrades {
         test_isInsufficient(gradeHandler, 0, 0);
         test_insufficientGrades(gradeHandler, 0, 0);
         test_sumOfArrayElements(gradeHandler);
+        test_averageGrade(gradeHandler);
     }
 
     private void test_nextMultipleOf5(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
@@ -133,21 +133,57 @@ public class TestGrades {
 
     private void test_sumOfArrayElements(Grades gradeHandler) {
         ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
-        int expectedResult   = 55;
-        int unexpectedResult = 54;
+        int expected   = 55;
+        int unexpected = 54;
 
         try {
-            assert gradeHandler.sumOfArrayElements(numbers) == expectedResult;
+            assert gradeHandler.sumOfArrayElements(numbers) == expected;
             System.out.println("Test success case - sum of array elements => successful!");
         } catch (AssertionError e) {
             System.out.println("Test success case - sum of array elements => failed!");
         }
         try {
-            assert gradeHandler.sumOfArrayElements(numbers) == unexpectedResult;
+            assert gradeHandler.sumOfArrayElements(numbers) == unexpected;
             System.out.println("Test fail case - sum of array elements => failed!");
         } catch (AssertionError e) {
             System.out.println("Test fail case - sum of array elements => successful!");
         }
     }
 
+    private void test_averageGrade(Grades gradeHandler) {
+        ArrayList<Integer> grades = new ArrayList<>(Arrays.asList(33, 75, 100, 90, 0));
+        int result = gradeHandler.averageGrade(grades);
+        int expected  = 59;
+        int unexpected = 75;
+
+        try {
+            assert result == expected;
+            System.out.println("Test success case - average grade => successful!");
+        } catch (AssertionError e) {
+            System.out.println("Test success case - average grade => failed!");
+        }
+        try {
+            assert result == unexpected;
+            System.out.println("Test fail case - average grade => failed!");
+        } catch (AssertionError e) {
+            System.out.println("Test fail case - average grade => successful!");
+        }
+
+        grades.clear();
+        result = gradeHandler.averageGrade(grades);
+
+        try {
+            assert result == 0;
+            System.out.println("Test success case - average grade => successful!");
+        } catch (AssertionError e) {
+            System.out.println("Test success case - average grade => failed!");
+        }
+        try {
+            assert !(result == 0);
+            System.out.println("Test fail case - average grade => failed!");
+        } catch (AssertionError e) {
+            System.out.println("Test fail case - average grade => successful!");
+        }
+
+    }
 }
