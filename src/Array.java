@@ -27,5 +27,7 @@ public class Array {
     public int sumWithoutMinimalNumber(ArrayList<Integer> array) {
         return sum(array) - minimalNumber(array);
     }
-
+    public int sumWithoutMaximalNumber(ArrayList<Integer> array) {
+        return sum(array) - maximalNumber(array);
+    }
 }
