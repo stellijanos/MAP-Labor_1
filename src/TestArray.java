@@ -52,7 +52,24 @@ public class TestArray {
     }
 
     private void test_sumWithoutMinimalNumber() {
+        Array numbers = new Array(40, 55, 60, 3, 90, 87, 69, 43);
+        int result = numbers.sumWithoutMinimalNumber();
+        int expected = 444;
+        int unexpected = 447;
 
+        try {
+            assert result == expected;
+            System.out.println("Test success case - sum without minimal number => successful!");
+        } catch ( AssertionError e) {
+            System.out.println("Test success case - sum without minimal number => failed!");
+        }
+
+        try {
+            assert result == unexpected;
+            System.out.println("Test fail case - sum without minimal number => failed!");
+        } catch ( AssertionError e) {
+            System.out.println("Test fail case - sum without minimal number => successful!");
+        }
     }
 
     private void test_sumWithoutMaximalNumber() {
