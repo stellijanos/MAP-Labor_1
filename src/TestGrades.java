@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class TestGrades {
     public void runTests() {
@@ -7,6 +8,7 @@ public class TestGrades {
         test_nextMultipleOf5(gradeHandler, 0, 0);
         test_round(gradeHandler, 0, 0);
         test_isInsufficient(gradeHandler, 0, 0);
+        test_insufficientGrades(gradeHandler, 0, 0);
         test_sumOfArrayElements(gradeHandler);
     }
 
@@ -74,6 +76,59 @@ public class TestGrades {
         }
         System.out.println("Test success case - is insufficient => " + (expectedErrorCount == 0 ? "successful" : "failed") + '!');
         System.out.println("Test fail case - is insufficient => "  + (unexpectedErrorCount == 0 ? "successful" : "failed") + '!');
+    }
+
+    private void test_insufficientGrades(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
+        ArrayList<Integer> grades = new ArrayList<>(Arrays.asList(0, 34, 35, 36, 37, 38, 39, 40, 41, 42));
+        ArrayList<Integer> result = gradeHandler.insufficientGrades(grades);
+        ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(0, 34, 35, 36, 37));
+        ArrayList<Integer> unexpected = new ArrayList<>(Arrays.asList(38, 39, 40, 41, 42));
+
+        for (int i = 0; i < result.size(); i++) {
+            try {
+                assert result.get(i).equals(expected.get(i));
+            } catch (AssertionError e) {
+                expectedErrorCount++;
+            }
+            try {
+                assert result.get(i).equals(unexpected.get(i));
+                unexpectedErrorCount++;
+            } catch (AssertionError e) {/**/}
+        }
+
+        grades.clear();
+        result = gradeHandler.insufficientGrades(grades);
+        expected.clear();
+
+        try {
+            assert result.isEmpty();
+        } catch (AssertionError e) {
+            expectedErrorCount++;
+        }
+        try {
+            assert result.size() == 1;
+            unexpectedErrorCount++;
+        } catch (AssertionError e) {/**/}
+
+        grades.add(38);
+        grades.add(39);
+        grades.add(40);
+
+        result = gradeHandler.insufficientGrades(grades);
+
+        try {
+            assert result.isEmpty();
+        } catch (AssertionError e) {
+            expectedErrorCount++;
+        }
+        try {
+            assert !result.isEmpty();
+            unexpectedErrorCount++;
+        } catch (AssertionError e) {/**/}
+
+        System.out.println("Test success case - insufficient grades => " + (expectedErrorCount == 0 ? "successful" : "failed") + '!');
+        System.out.println("Test fail case - insufficient grades => "  + (unexpectedErrorCount == 0 ? "successful" : "failed") + '!');
+
     }
 
     private void test_sumOfArrayElements(Grades gradeHandler) {
