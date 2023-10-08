@@ -9,7 +9,7 @@ public class TestGrades {
         test_isInsufficient(gradeHandler, 0, 0);
         test_insufficientGrades(gradeHandler, 0, 0);
         test_sumOfArrayElements(gradeHandler);
-        test_averageGrade(gradeHandler);
+        test_averageGrade(gradeHandler, 0 ,0);
     }
 
     private void test_nextMultipleOf5(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
@@ -150,7 +150,7 @@ public class TestGrades {
         }
     }
 
-    private void test_averageGrade(Grades gradeHandler) {
+    private void test_averageGrade(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
         ArrayList<Integer> grades = new ArrayList<>(Arrays.asList(33, 75, 100, 90, 0));
         int result = gradeHandler.averageGrade(grades);
         int expected  = 59;
@@ -158,32 +158,29 @@ public class TestGrades {
 
         try {
             assert result == expected;
-            System.out.println("Test success case - average grade => successful!");
         } catch (AssertionError e) {
-            System.out.println("Test success case - average grade => failed!");
+            expectedErrorCount++;
         }
         try {
             assert result == unexpected;
-            System.out.println("Test fail case - average grade => failed!");
-        } catch (AssertionError e) {
-            System.out.println("Test fail case - average grade => successful!");
-        }
+            unexpectedErrorCount++;
+        } catch (AssertionError e) {/**/}
 
         grades.clear();
         result = gradeHandler.averageGrade(grades);
 
         try {
             assert result == 0;
-            System.out.println("Test success case - average grade => successful!");
         } catch (AssertionError e) {
-            System.out.println("Test success case - average grade => failed!");
+            expectedErrorCount++;
         }
         try {
             assert !(result == 0);
-            System.out.println("Test fail case - average grade => failed!");
-        } catch (AssertionError e) {
-            System.out.println("Test fail case - average grade => successful!");
-        }
+            unexpectedErrorCount++;
+        } catch (AssertionError e) {/**/}
 
+
+        System.out.println("Test success case - insufficient grades => " + (expectedErrorCount == 0 ? "successful" : "failed") + '!');
+        System.out.println("Test fail case - insufficient grades => "  + (unexpectedErrorCount == 0 ? "successful" : "failed") + '!');
     }
 }
