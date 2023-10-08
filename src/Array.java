@@ -17,4 +17,15 @@ public class Array {
         return maximalNumber;
     }
 
+    public int sum(ArrayList<Integer> array) {
+        int sum = 0;
+        for (Integer number: array)
+            sum += number;
+        return sum;
+    }
+
+    public int sumWithoutMinimalNumber(ArrayList<Integer> array) {
+        return sum(array) - minimalNumber(array);
+    }
+
 }
