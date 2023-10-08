@@ -64,7 +64,7 @@ public class Grades {
         int maximalRound = 0;
         for (Integer grade: grades)
             if (maximalRound < round(grade) - grade)
-                maximalRound = round(grade) - grade;
+                maximalRound = grade;
         return maximalRound;
     }
 }

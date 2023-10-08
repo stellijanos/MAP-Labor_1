@@ -10,6 +10,7 @@ public class TestGrades {
         test_sumOfArrayElements(gradeHandler);
         test_averageGrade(gradeHandler, 0 ,0);
         test_roundedGrades(gradeHandler, 0, 0);
+        test_maximalRoundedGrade(gradeHandler, 0, 0);
     }
 
     private void test_nextMultipleOf5(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
@@ -163,8 +164,8 @@ public class TestGrades {
 
     private void test_roundedGrades(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
 
-        ArrayList<Integer> numbers    = new ArrayList<>(Arrays.asList(0, 10, 21, 32, 43, 54, 65, 76, 87, 98, 100));
-        ArrayList<Integer> result     = gradeHandler.roundedGrades(numbers);
+        ArrayList<Integer> grades     = new ArrayList<>(Arrays.asList(0, 10, 21, 32, 43, 54, 65, 76, 87, 98, 100));
+        ArrayList<Integer> result     = gradeHandler.roundedGrades(grades);
         ArrayList<Integer> expected   = new ArrayList<>(Arrays.asList(0, 10, 21, 32, 45, 55, 65, 76, 87, 100, 100));
         ArrayList<Integer> unexpected = new ArrayList<>(Arrays.asList(5, 15, 20, 30, 40, 50, 70, 80, 90, 95, 105));
 
@@ -179,7 +180,28 @@ public class TestGrades {
                 unexpectedErrorCount++;
             } catch (AssertionError e) {/**/}
         }
-        System.out.println("Test success case - round => " + (expectedErrorCount == 0 ? "successful" : "failed") + '!');
-        System.out.println("Test fail case - round => "  + (unexpectedErrorCount == 0 ? "successful" : "failed") + '!');
+        System.out.println("Test success case - rounded grades => " + (expectedErrorCount == 0 ? "successful" : "failed") + '!');
+        System.out.println("Test fail case - rounded grades => "  + (unexpectedErrorCount == 0 ? "successful" : "failed") + '!');
+    }
+
+    private void test_maximalRoundedGrade(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
+        ArrayList<Integer> grades = new ArrayList<Integer>(Arrays.asList(11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
+        int result = gradeHandler.maximalRoundedGrade(grades);
+        int expected = 14;
+        int unexpected = 17;
+        System.out.println(result);
+
+        try {
+            assert result == expected;
+        } catch (AssertionError e) {
+            expectedErrorCount++;
+        }
+        try {
+            assert result == unexpected;
+            unexpectedErrorCount++;
+        } catch (AssertionError e) {/**/}
+
+        System.out.println("Test success case - maximal rounded grade => " + (expectedErrorCount == 0 ? "successful" : "failed") + '!');
+        System.out.println("Test fail case - maximal rounded grade => "  + (unexpectedErrorCount == 0 ? "successful" : "failed") + '!');
     }
 }
