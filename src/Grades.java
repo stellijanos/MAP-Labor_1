@@ -23,21 +23,21 @@ public class Grades {
     /**
      *
      * @param grade an Integer between 0 and 100
-     * @return true if the grade is insuficient or false otherwise
+     * @return true if the grade is insufficient or false otherwise
      */
-    public boolean isInsuficient(int grade) {
+    public boolean isInsufficient(int grade) {
         return grade < 38 || round(grade) < 40;
     }
 
     /**
      *
      * @param grades an array with Integer numbers between 0 and 100
-     * @return filtered grades by insuficiency
+     * @return filtered grades by insufficiency
      */
-    public ArrayList<Integer> insuficientGrades(ArrayList<Integer> grades) {
+    public ArrayList<Integer> insufficientGrades(ArrayList<Integer> grades) {
         ArrayList<Integer> result = new ArrayList<>();
         for (Integer grade: grades)
-            if (isInsuficient(grade))
+            if (isInsufficient(grade))
                 result.add(grade);
         return result;
     }
