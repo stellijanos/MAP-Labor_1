@@ -5,11 +5,11 @@ public class TestGrades {
     public void runTests() {
         Grades gradeHandler = new Grades();
         test_nextMultipleOf5(gradeHandler, 0, 0);
-        test_round(gradeHandler, 0, 0);
         test_isInsufficient(gradeHandler, 0, 0);
         test_insufficientGrades(gradeHandler, 0, 0);
         test_sumOfArrayElements(gradeHandler);
         test_averageGrade(gradeHandler, 0 ,0);
+        test_roundedGrades(gradeHandler, 0, 0);
     }
 
     private void test_nextMultipleOf5(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
@@ -35,28 +35,6 @@ public class TestGrades {
         System.out.println("Test fail case - multiple of 5 => "  + (unexpectedErrorCount == 0 ? "successful" : "failed") + '!');
     }
 
-    private void test_round(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
-
-        int[] numbers    = {0, 10, 21, 32, 43, 54, 65, 76, 87, 98, 100};
-        int[] expected   = {0, 10, 21, 32, 45, 55, 65, 76, 87, 100, 100};
-        int[] unexpected = {5, 15, 20, 30, 40, 50, 70, 80, 90, 95, 105};
-
-        for (int i = 0; i < numbers.length; i++) {
-            try {
-                assert gradeHandler.round(numbers[i]) == expected[i];
-            } catch (AssertionError e) {
-                expectedErrorCount++;
-            }
-
-            try {
-                assert gradeHandler.round(numbers[i]) == unexpected[i];
-                unexpectedErrorCount++;
-            } catch (AssertionError e) {/**/}
-        }
-
-        System.out.println("Test success case - round => " + (expectedErrorCount == 0 ? "successful" : "failed") + '!');
-        System.out.println("Test fail case - round => "  + (unexpectedErrorCount == 0 ? "successful" : "failed") + '!');
-    }
 
     private void test_isInsufficient(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
         int[] numbers        = {0, 36, 37, 38, 39, 40, 41, 42, 50, 100};
@@ -179,8 +157,29 @@ public class TestGrades {
             unexpectedErrorCount++;
         } catch (AssertionError e) {/**/}
 
-
         System.out.println("Test success case - insufficient grades => " + (expectedErrorCount == 0 ? "successful" : "failed") + '!');
         System.out.println("Test fail case - insufficient grades => "  + (unexpectedErrorCount == 0 ? "successful" : "failed") + '!');
+    }
+
+    private void test_roundedGrades(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
+
+        ArrayList<Integer> numbers    = new ArrayList<>(Arrays.asList(0, 10, 21, 32, 43, 54, 65, 76, 87, 98, 100));
+        ArrayList<Integer> result     = gradeHandler.roundedGrades(numbers);
+        ArrayList<Integer> expected   = new ArrayList<>(Arrays.asList(0, 10, 21, 32, 45, 55, 65, 76, 87, 100, 100));
+        ArrayList<Integer> unexpected = new ArrayList<>(Arrays.asList(5, 15, 20, 30, 40, 50, 70, 80, 90, 95, 105));
+
+        for (int i = 0; i < result.size(); i++) {
+            try {
+                assert result.get(i).equals(expected.get(i));
+            } catch (AssertionError e) {
+                expectedErrorCount++;
+            }
+            try {
+                assert result.get(i).equals(unexpected.get(i));
+                unexpectedErrorCount++;
+            } catch (AssertionError e) {/**/}
+        }
+        System.out.println("Test success case - round => " + (expectedErrorCount == 0 ? "successful" : "failed") + '!');
+        System.out.println("Test fail case - round => "  + (unexpectedErrorCount == 0 ? "successful" : "failed") + '!');
     }
 }
