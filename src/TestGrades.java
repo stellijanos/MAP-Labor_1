@@ -185,11 +185,10 @@ public class TestGrades {
     }
 
     private void test_maximalRoundedGrade(Grades gradeHandler, int expectedErrorCount, int unexpectedErrorCount) {
-        ArrayList<Integer> grades = new ArrayList<Integer>(Arrays.asList(11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
+        ArrayList<Integer> grades = new ArrayList<Integer>(Arrays.asList(7, 34, 69, 93, 96, 10, 45, 30));
         int result = gradeHandler.maximalRoundedGrade(grades);
-        int expected = 14;
-        int unexpected = 17;
-        System.out.println(result);
+        int expected = 95;
+        int unexpected = 96;
 
         try {
             assert result == expected;

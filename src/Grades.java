@@ -61,11 +61,10 @@ public class Grades {
     }
 
     public int maximalRoundedGrade(ArrayList<Integer> grades) {
-        int maximalRound = 0;
+        int maximalRoundedGrade = 0;
         for (Integer grade: grades)
-            if (maximalRound < round(grade) - grade)
-                maximalRound = grade;
-        return maximalRound;
+            if (round(grade) != grade && maximalRoundedGrade < round(grade))
+                maximalRoundedGrade = round(grade);
+        return maximalRoundedGrade;
     }
 }
-
