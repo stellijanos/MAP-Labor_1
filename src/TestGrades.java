@@ -4,6 +4,9 @@ import java.util.Arrays;
 public class TestGrades {
     public void runTests() {
         Grades gradeHandler = new Grades();
+
+        System.out.println("Tests for Problem 1 - Grades\n");
+
         test_nextMultipleOf5(gradeHandler, 0, 0);
         test_isInsufficient(gradeHandler, 0, 0);
         test_insufficientGrades(gradeHandler, 0, 0);
