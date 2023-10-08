@@ -1,27 +1,25 @@
 public class TestArray {
     public void runTests() {
-
-        Array array = new Array();
-
-        test_minimalNumber(array);
-        test_maximalNumber(array);
-        test_sumWithoutMinimalNumber(array);
-        test_sumWithoutMaximalNumber(array);
+        test_minimalNumber();
+        test_maximalNumber();
+        test_sumWithoutMinimalNumber();
+        test_sumWithoutMaximalNumber();
     }
 
-    private void test_minimalNumber(Array array) {
-
-    }
-
-    private void test_maximalNumber(Array array) {
+    private void test_minimalNumber() {
+        Array numbers = new Array(40, 55, 60, 3, 90, 87, 69, 43);
 
     }
 
-    private void test_sumWithoutMinimalNumber(Array array) {
+    private void test_maximalNumber() {
 
     }
 
-    private void test_sumWithoutMaximalNumber(Array array) {
+    private void test_sumWithoutMinimalNumber() {
+
+    }
+
+    private void test_sumWithoutMaximalNumber() {
 
     }
 

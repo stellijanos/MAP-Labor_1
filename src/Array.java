@@ -1,33 +1,38 @@
-import java.util.ArrayList;
 
 public class Array {
-    public int minimalNumber(ArrayList<Integer> array) {
-        int minimalNumber = array.get(0);
-        for (Integer number: array)
+
+    private final int[] _array;
+    public Array(int...numbers) {
+        this._array = numbers;
+    }
+
+    public int minimalNumber() {
+        int minimalNumber = _array[0];
+        for (Integer number: _array)
             if (minimalNumber > number)
                 minimalNumber = number;
         return minimalNumber;
     }
 
-    public int maximalNumber(ArrayList<Integer> array) {
-        int maximalNumber = array.get(0);
-        for (Integer number: array)
+    public int maximalNumber() {
+        int maximalNumber = _array[0];
+        for (Integer number: _array)
             if (maximalNumber < number)
                 maximalNumber = number;
         return maximalNumber;
     }
 
-    public int sum(ArrayList<Integer> array) {
+    public int sum() {
         int sum = 0;
-        for (Integer number: array)
+        for (Integer number: _array)
             sum += number;
         return sum;
     }
 
-    public int sumWithoutMinimalNumber(ArrayList<Integer> array) {
-        return sum(array) - minimalNumber(array);
+    public int sumWithoutMinimalNumber() {
+        return sum() - minimalNumber();
     }
-    public int sumWithoutMaximalNumber(ArrayList<Integer> array) {
-        return sum(array) - maximalNumber(array);
+    public int sumWithoutMaximalNumber() {
+        return sum() - maximalNumber();
     }
 }
