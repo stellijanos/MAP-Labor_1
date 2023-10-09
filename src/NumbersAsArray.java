@@ -1,15 +1,19 @@
 public class NumbersAsArray {
 
+    private int[] _number;
+    public NumbersAsArray(int...numbers) {
+        this._number = numbers;
+    }
 
-    public int ArrayToNumber(int[] bigNumber) {
+    private int ArrayToNumber(int[] numberAsArray) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int digit: bigNumber) {
+        for (int digit: numberAsArray) {
             stringBuilder.append(digit);
         }
         return Integer.parseInt(stringBuilder.toString());
     }
 
-    public int[] NumberToArray(int number) {
+    private int[] NumberToArray(int number) {
 
         String numberAsString = Integer.toString(number);
         int[] result = new int[numberAsString.length()];
@@ -20,12 +24,17 @@ public class NumbersAsArray {
         return result;
     }
 
-
-    public int[] add(int[] firstArray, int[] secondArray) {
-        return NumberToArray(ArrayToNumber(firstArray) + ArrayToNumber(secondArray));
+    public int[] add(int[] array) {
+        return NumberToArray(ArrayToNumber(_number) + ArrayToNumber(array));
     }
 
-    public int[] subtract(int[] firstArray, int[] secondArray) {
-        return NumberToArray(ArrayToNumber(firstArray) - ArrayToNumber(secondArray));
+    public int[] subtract(int[] array) {
+        return NumberToArray(ArrayToNumber(_number) - ArrayToNumber(array));
     }
+
+    public int[] multiply(int number) {
+        return NumberToArray(ArrayToNumber(_number) * number);
+    }
+
 }
+
