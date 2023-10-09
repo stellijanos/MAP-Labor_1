@@ -1,4 +1,6 @@
-import tests.*;
+package labor_1;
+
+import labor_1.tests.*;
 
 public class Main {
     public static void main(String[] args) {
