@@ -20,11 +20,12 @@ public class NumberAsArray {
 
     public int[] numberToArray(int number) {
 
-        String numberAsString = Integer.toString(number);
-        int[] result = new int[numberAsString.length()];
-        for (int i = 0; i < numberAsString.length(); i++) {
-            char digitAsChar = numberAsString.charAt(i);
-            result[i] = Character.getNumericValue(digitAsChar);
+        int numberOfDigits = (int) Math.log10(number) + 1;
+
+        int[] result = new int[numberOfDigits];
+        for (int i = numberOfDigits - 1; i >= 0; i--) {
+            result[i] = number % 10;
+            number /= 10;
         }
         return result;
     }

@@ -1,8 +1,16 @@
 public class TestNumbersAsArray {
+
+    private void printArray(int[] array) {
+        System.out.println(array.length);
+        for (int digit : array) {
+            System.out.print(digit);
+        }
+    }
     public void runTests() {
 
         System.out.println("\n\nTests for Problem 3 - Numbers as Array\n");
         test_ArrayToNumber();
+        test_NumberToArray();
 
     }
 
@@ -26,5 +34,13 @@ public class TestNumbersAsArray {
         } catch (AssertionError e) {
             System.out.println("Test fail case - Array to Number => successful");
         }
+    }
+
+    private void test_NumberToArray() {
+        NumberAsArray numberAsArray = new NumberAsArray(1,0,0,0);
+        int number = 1000;
+        int[] result = numberAsArray.numberToArray(number);
+        int[] expected = new int[]{1, 0, 0, 0};
+
     }
 }
