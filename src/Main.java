@@ -1,3 +1,5 @@
+import tests.*;
+
 public class Main {
     public static void main(String[] args) {
         TestGrades testGrades = new TestGrades();
@@ -8,3 +10,4 @@ public class Main {
         testNumbersAsArray.runTests();
     }
 }
+
