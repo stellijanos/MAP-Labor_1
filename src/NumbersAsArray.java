@@ -9,14 +9,24 @@ public class NumbersAsArray {
         return Integer.parseInt(stringBuilder.toString());
     }
 
+    public int[] NumberToArray(int number) {
 
-
-    public int add(int[] firstNumber, int[] secondNumber) {
-        int result = 0;
-
-
+        String numberAsString = Integer.toString(number);
+        int[] result = new int[numberAsString.length()];
+        for (int i = 0; i < numberAsString.length(); i++) {
+            char digitAsChar = numberAsString.charAt(i);
+            result[i] = Character.getNumericValue(digitAsChar);
+        }
         return result;
     }
+
+
+    public int[] add(int[] firstArray, int[] secondArray) {
+        int result = ArrayToNumber(firstArray) + ArrayToNumber(secondArray);
+        return NumberToArray(result);
+    }
+
+
 
 
 }

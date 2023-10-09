@@ -13,9 +13,9 @@ public class TestNumbersAsArray {
 
         int number = 1234567890;
 
-        int[] result = numbersAsArray.numberToArray(number);
-
-        System.out.println(Arrays.toString(result));
+//        int[] result = numbersAsArray.numberToArray(number);
+//
+//        System.out.println(Arrays.toString(result));
 
     }
 }
