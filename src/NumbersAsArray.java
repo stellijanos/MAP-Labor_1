@@ -1,25 +1,22 @@
 public class NumbersAsArray {
 
-    private int numberOfDigits(int number) {
-        int nrOfDigits = 0;
-        while (number > 0) {
-            nrOfDigits ++;
-            number /= 10;
+
+    public int ArrayToNumber(int[] bigNumber) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int digit: bigNumber) {
+            stringBuilder.append(digit);
         }
-        return nrOfDigits;
+        return Integer.parseInt(stringBuilder.toString());
     }
 
-    private int[] numberToArray(int number) {
 
-        int nrOfDigits = numberOfDigits(number);
 
-        int[] result = new int[numberOfDigits(number)];
+    public int add(int[] firstNumber, int[] secondNumber) {
+        int result = 0;
 
-        for (int i = 0; i < nrOfDigits; i++) {
-            result[i] = number % 10;
-            number /= 10;
-        }
 
         return result;
     }
+
+
 }
