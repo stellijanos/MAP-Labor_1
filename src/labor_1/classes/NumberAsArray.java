@@ -32,12 +32,12 @@ public class NumberAsArray {
         return result;
     }
 
-    public int[] add(int...digits) {
-        return numberToArray(arrayToNumber(_digits) + arrayToNumber(digits));
+    public int[] add(NumberAsArray other) {
+        return numberToArray(arrayToNumber(_digits) + arrayToNumber(other.get()));
     }
 
-    public int[] subtract(int...digits) {
-        return numberToArray(arrayToNumber(_digits) - arrayToNumber(digits));
+    public int[] subtract(NumberAsArray other) {
+        return numberToArray(arrayToNumber(_digits) - arrayToNumber(other.get()));
     }
 
     public int[] multiply(int number) {
