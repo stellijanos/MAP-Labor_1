@@ -8,10 +8,5 @@ public class TestNumbersAsArray {
 
     private void test_numberToArray() {
 
-        NumbersAsArray numbersAsArray = new NumbersAsArray();
-
-        int number = 1234567890;
-
-
     }
 }

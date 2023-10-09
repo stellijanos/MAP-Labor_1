@@ -1,6 +1,6 @@
 public class NumbersAsArray {
 
-    private int[] _number;
+    private final int[] _number;
     public NumbersAsArray(int...numbers) {
         this._number = numbers;
     }
@@ -34,6 +34,10 @@ public class NumbersAsArray {
 
     public int[] multiply(int number) {
         return NumberToArray(ArrayToNumber(_number) * number);
+    }
+
+    public int[] divide(int number) {
+        return number == 0 ? new int[]{} : NumberToArray(ArrayToNumber(_number) / number) ;
     }
 
 }
