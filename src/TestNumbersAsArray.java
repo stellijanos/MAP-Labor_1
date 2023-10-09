@@ -1,4 +1,3 @@
-import java.util.Arrays;
 public class TestNumbersAsArray {
     public void runTests() {
 
@@ -13,9 +12,6 @@ public class TestNumbersAsArray {
 
         int number = 1234567890;
 
-//        int[] result = numbersAsArray.numberToArray(number);
-//
-//        System.out.println(Arrays.toString(result));
 
     }
 }

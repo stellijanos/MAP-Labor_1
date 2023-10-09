@@ -22,11 +22,10 @@ public class NumbersAsArray {
 
 
     public int[] add(int[] firstArray, int[] secondArray) {
-        int result = ArrayToNumber(firstArray) + ArrayToNumber(secondArray);
-        return NumberToArray(result);
+        return NumberToArray(ArrayToNumber(firstArray) + ArrayToNumber(secondArray));
     }
 
-
-
-
+    public int[] subtract(int[] firstArray, int[] secondArray) {
+        return NumberToArray(ArrayToNumber(firstArray) - ArrayToNumber(secondArray));
+    }
 }
