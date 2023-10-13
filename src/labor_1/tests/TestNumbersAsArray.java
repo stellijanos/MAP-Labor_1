@@ -15,8 +15,11 @@ public class TestNumbersAsArray {
         test_NumberToArray();
         test_add();
         test_subtract();
-
+        test_multiply();
+//        test_divide();
     }
+
+
 
     private void test_ArrayToNumber() {
         NumberAsArray numberAsArray = new NumberAsArray(1,0,0,0);
@@ -110,9 +113,34 @@ public class TestNumbersAsArray {
             assert result == unexpected;
             System.out.println("Test fail case - subtract => failed!");
         } catch (AssertionError e) {
-            System.out.println("Test fail case - add => successful!");
+            System.out.println("Test fail case - subtract => successful!");
+        }
+    }
+
+
+    private void test_multiply() {
+        NumberAsArray firstNumberAsArray = new NumberAsArray(1, 2, 3, 4, 5, 6, 7);
+        int multiplier = 9;
+        int[] multiplication = firstNumberAsArray.multiply(multiplier);
+
+        int result = firstNumberAsArray.arrayToNumber(multiplication);
+        int expected = firstNumberAsArray.arrayToNumber(new int[]{1,1,1,1,1,1,0,3});
+        int unexpected = firstNumberAsArray.arrayToNumber(new int[]{9,8,7,6,5,4,3});
+        try {
+            assert result == expected;
+            System.out.println("Test success case - multiplication => successful!");
+        } catch (AssertionError e) {
+            System.out.println("Test success case - multiplication => failed!");
         }
 
+        try {
+            assert result == unexpected;
+            System.out.println("Test fail case - multiplication => failed!");
+        } catch (AssertionError e) {
+            System.out.println("Test fail case - multiplication => successful!");
+        }
     }
+
+
 
 }
