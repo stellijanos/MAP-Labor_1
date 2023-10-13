@@ -2,12 +2,6 @@ package labor_1.tests;
 import labor_1.classes.NumberAsArray;
 public class TestNumbersAsArray {
 
-    private void printArray(int[] array) {
-        System.out.println(array.length);
-        for (int digit : array) {
-            System.out.print(digit);
-        }
-    }
     public void runTests() {
 
         System.out.println("\n\nTests for Problem 3 - Numbers as Array\n");
@@ -164,6 +158,3 @@ public class TestNumbersAsArray {
         }
     }
 }
-
-
-
