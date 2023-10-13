@@ -12,6 +12,9 @@ public class NumberAsArray {
         this._digits = digits;
     }
 
+
+
+
     public int arrayToNumber(int[] numberAsArray) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int digit: numberAsArray) {
@@ -31,6 +34,8 @@ public class NumberAsArray {
         }
         return result;
     }
+
+
 
     public int[] add(NumberAsArray other) {
         return numberToArray(arrayToNumber(_digits) + arrayToNumber(other.get()));

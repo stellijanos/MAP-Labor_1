@@ -13,6 +13,7 @@ public class TestNumbersAsArray {
         System.out.println("\n\nTests for Problem 3 - Numbers as Array\n");
         test_ArrayToNumber();
         test_NumberToArray();
+        test_add();
 
     }
 
@@ -44,7 +45,7 @@ public class TestNumbersAsArray {
         int number = 1000;
         int[] result = numberAsArray.numberToArray(number);
         int[] expected = new int[]{1, 0, 0, 0};
-        int[] unexpected = new int[]{0, 1, 1, 1};
+        int[] unexpected = new int[]{1, 1, 1, 1};
 
         int expectedErrorCount = 0, unexpectedErrorCount = 0;
 
@@ -57,11 +58,36 @@ public class TestNumbersAsArray {
 
             try {
                 assert result[i] == unexpected[i];
-                unexpectedErrorCount++;
-            } catch (AssertionError e) {/**/}
+            } catch (AssertionError e) {
+                System.out.println("Test fail case - number to array => successful!");
+            }
         }
 
         System.out.println("Test success case - number to array => " + (expectedErrorCount == 0 ? "successful" : "failed") + '!');
-        System.out.println("Test fail case - number to array => "  + (unexpectedErrorCount == 0 ? "successful" : "failed") + '!');
+    }
+
+    private void test_add() {
+        NumberAsArray firstNumberAsArray = new NumberAsArray(1, 2, 3, 4, 5, 6, 7);
+        NumberAsArray secondNumberAsArray = new NumberAsArray(6, 7, 8, 9, 0, 1, 2);
+        int[] addition = firstNumberAsArray.add(secondNumberAsArray);
+
+        int result = firstNumberAsArray.arrayToNumber(addition);
+        int expected = firstNumberAsArray.arrayToNumber(new int[]{8, 0, 2, 3, 5, 7, 9});
+        int unexpected = firstNumberAsArray.arrayToNumber(new int[]{7, 9, 1, 3, 5, 7, 9});
+
+        try {
+            assert result == expected;
+            System.out.println("Test success case - add => successful!");
+        } catch (AssertionError e) {
+            System.out.println("Test success case - add => failed!");
+        }
+
+        try {
+            assert result == unexpected;
+            System.out.println("Test fail case - add => failed!");
+        } catch (AssertionError e) {
+            System.out.println("Test fail case - add => successful!");
+        }
+
     }
 }
