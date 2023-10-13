@@ -145,16 +145,16 @@ public class TestNumbersAsArray {
         int unexpected = firstNumberAsArray.arrayToNumber(new int[]{9,8,7,6,5,4,3});
         try {
             assert result == expected;
-            System.out.println("Test success case - multiplication => successful!");
+            System.out.println("Test success case - divide => successful!");
         } catch (AssertionError e) {
-            System.out.println("Test success case - multiplication => failed!");
+            System.out.println("Test success case - divide => failed!");
         }
 
         try {
             assert result == unexpected;
-            System.out.println("Test fail case - multiplication => failed!");
+            System.out.println("Test fail case - divide => failed!");
         } catch (AssertionError e) {
-            System.out.println("Test fail case - multiplication => successful!");
+            System.out.println("Test fail case - divide => successful!");
         }
     }
 }
