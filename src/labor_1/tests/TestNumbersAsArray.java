@@ -137,12 +137,13 @@ public class TestNumbersAsArray {
 
     private void test_divide() {
         NumberAsArray firstNumberAsArray = new NumberAsArray(1, 2, 3, 4, 5, 6, 7);
-        int multiplier = 9;
-        int[] multiplication = firstNumberAsArray.multiply(multiplier);
+        int divisor = 2;
+        int[] division = firstNumberAsArray.divide(divisor);
 
-        int result = firstNumberAsArray.arrayToNumber(multiplication);
-        int expected = firstNumberAsArray.arrayToNumber(new int[]{1,1,1,1,1,1,0,3});
-        int unexpected = firstNumberAsArray.arrayToNumber(new int[]{9,8,7,6,5,4,3});
+        int result = firstNumberAsArray.arrayToNumber(division);
+        int expected = firstNumberAsArray.arrayToNumber(new int[]{6,1,7,2,8,3});
+        int unexpected = firstNumberAsArray.arrayToNumber(new int[]{6,1,7,1,8,3});
+
         try {
             assert result == expected;
             System.out.println("Test success case - divide => successful!");

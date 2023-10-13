@@ -24,7 +24,6 @@ public class NumberAsArray {
     }
 
     public int[] numberToArray(int number) {
-
         int numberOfDigits = (int) Math.log10(number) + 1;
 
         int[] result = new int[numberOfDigits];
