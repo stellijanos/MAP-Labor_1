@@ -16,7 +16,7 @@ public class TestNumbersAsArray {
         test_add();
         test_subtract();
         test_multiply();
-//        test_divide();
+        test_divide();
     }
 
 
@@ -141,6 +141,26 @@ public class TestNumbersAsArray {
         }
     }
 
+    private void test_divide() {
+        NumberAsArray firstNumberAsArray = new NumberAsArray(1, 2, 3, 4, 5, 6, 7);
+        int multiplier = 9;
+        int[] multiplication = firstNumberAsArray.multiply(multiplier);
 
+        int result = firstNumberAsArray.arrayToNumber(multiplication);
+        int expected = firstNumberAsArray.arrayToNumber(new int[]{1,1,1,1,1,1,0,3});
+        int unexpected = firstNumberAsArray.arrayToNumber(new int[]{9,8,7,6,5,4,3});
+        try {
+            assert result == expected;
+            System.out.println("Test success case - multiplication => successful!");
+        } catch (AssertionError e) {
+            System.out.println("Test success case - multiplication => failed!");
+        }
 
+        try {
+            assert result == unexpected;
+            System.out.println("Test fail case - multiplication => failed!");
+        } catch (AssertionError e) {
+            System.out.println("Test fail case - multiplication => successful!");
+        }
+    }
 }
