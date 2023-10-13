@@ -14,6 +14,7 @@ public class TestNumbersAsArray {
         test_ArrayToNumber();
         test_NumberToArray();
         test_add();
+        test_subtract();
 
     }
 
@@ -47,7 +48,7 @@ public class TestNumbersAsArray {
         int[] expected = new int[]{1, 0, 0, 0};
         int[] unexpected = new int[]{1, 1, 1, 1};
 
-        int expectedErrorCount = 0, unexpectedErrorCount = 0;
+        int expectedErrorCount = 0;
 
         for (int i = 0; i < result.length; i++) {
             try {
@@ -88,6 +89,30 @@ public class TestNumbersAsArray {
         } catch (AssertionError e) {
             System.out.println("Test fail case - add => successful!");
         }
+    }
+
+    private void test_subtract() {
+        NumberAsArray firstNumberAsArray = new NumberAsArray(1, 2, 3, 4, 5, 6, 7);
+        NumberAsArray secondNumberAsArray = new NumberAsArray(6, 7, 8, 9, 0, 1, 2);
+        int[] subtraction = firstNumberAsArray.subtract(secondNumberAsArray);
+
+        int result = firstNumberAsArray.arrayToNumber(subtraction);
+        int expected = firstNumberAsArray.arrayToNumber(new int[]{5,5,5,4,4,4,5});
+        int unexpected = firstNumberAsArray.arrayToNumber(new int[]{7,9,1,3,5,7,9});
+        try {
+            assert result == expected;
+            System.out.println("Test success case - subtract => successful!");
+        } catch (AssertionError e) {
+            System.out.println("Test success case - subtract => failed!");
+        }
+
+        try {
+            assert result == unexpected;
+            System.out.println("Test fail case - subtract => failed!");
+        } catch (AssertionError e) {
+            System.out.println("Test fail case - add => successful!");
+        }
 
     }
+
 }

@@ -42,7 +42,7 @@ public class NumberAsArray {
     }
 
     public int[] subtract(NumberAsArray other) {
-        return numberToArray(arrayToNumber(_digits) - arrayToNumber(other.get()));
+        return numberToArray(Math.abs(arrayToNumber(_digits) - arrayToNumber(other.get())));
     }
 
     public int[] multiply(int number) {
