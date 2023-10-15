@@ -1,20 +1,17 @@
 package labor_1.classes;
-import java.util.ArrayList;
 import java.util.Collections;
 
 public abstract class PcAccessory {
-    protected final ArrayList<Integer> _priceList = new ArrayList<>();
 
-    public void addIntoPriceList(int price) {
-        _priceList.add(price);
+    protected int[]_priceList = new int[]{};
+
+
+    public PcAccessory(int...prices) {
+        _priceList = prices;
     }
 
-    public ArrayList<Integer> priceList() {
+    public int[] getPriceList() {
         return _priceList;
-    }
-
-    public int mostExpensive() {
-        return Collections.max(_priceList);
     }
 
 }
