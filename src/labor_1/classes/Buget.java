@@ -5,42 +5,41 @@ import java.util.Collections;
 
 public class Buget {
 
-    private int getMinumum(int[] array) {
-        int min = array.length > 0 ? array[0] : -1;
-        for (int number: array) {
-            min = Math.min(min, number);
-        }
-        return min;
+    private int _bugetValue;
+
+
+    private int getMinumum(ArrayList<Integer> array) {
+        return array.isEmpty() ? -1 : Collections.min(array);
     }
 
-    private int getMaximum(int[] array) {
-        int max = array.length > 0 ? array[0] : -1;
-        for (int number: array) {
-           max = Math.max(max, number);
-        }
-        return max;
+    private int getMaximum(ArrayList<Integer> array) {
+        return array.isEmpty() ? -1 : Collections.min(array);
     }
 
-
-    public Object mostCheap(Keyboard keyboard) {
-        return Collections.min(keyboard.getPriceList());
-    }
-
-
-    public int mostExpensiveAffordable(int buget) {
-        return Collections.max(fiilterPrices(buget));
-    }
-
-    private ArrayList<Integer> fiilterPrices(int buget) {
+    private ArrayList<Integer> fiilterPrices(ArrayList<Integer> priceList) {
         ArrayList<Integer> result = new ArrayList<>();
 
-        for (int price : _priceList) {
-            if (price <= buget) {
+        for (int price : priceList) {
+            if (price <= _bugetValue)
                 result.add(price);
-            }
         }
         return result;
     }
 
+    public int get_bugetValue() {
+        return _bugetValue;
+    }
+
+    public void set_bugetValue(int _bugetValue) {
+        this._bugetValue = _bugetValue;
+    }
+
+    public int mostCheap(Keyboard keyboard) {
+        return getMinumum(keyboard.getPriceList());
+    }
+
+    public int mostExpensiveAffordable(USB usb) {
+        return getMaximum(fiilterPrices(usb.getPriceList()));
+    }
 
 }
