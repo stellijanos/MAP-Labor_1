@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Buget {
 
-    private int _bugetValue;
+    private int _budgetValue;
 
 
     private int getMinumum(ArrayList<Integer> array) {
@@ -20,18 +20,18 @@ public class Buget {
         ArrayList<Integer> result = new ArrayList<>();
 
         for (int price : priceList) {
-            if (price <= _bugetValue)
+            if (price <= _budgetValue)
                 result.add(price);
         }
         return result;
     }
 
-    public int get_bugetValue() {
-        return _bugetValue;
+    public int get_budgetValue() {
+        return _budgetValue;
     }
 
-    public void set_bugetValue(int _bugetValue) {
-        this._bugetValue = _bugetValue;
+    public void set_budgetValue(int _budgetValue) {
+        this._budgetValue = _budgetValue;
     }
 
     public int mostExpensive(PcAccessory pcAccessory) {
@@ -46,4 +46,26 @@ public class Buget {
         return getMaximum(fiilterPrices(usb.getPriceList()));
     }
 
+
+    public int buyPcAccessories(Keyboard keyboard, USB usb) {
+
+        int initialBudget = _budgetValue;
+        int keyboardPrice = 0;
+        int usbPrice = 0;
+
+        for ( int price: usb.getPriceList() ) {
+            if (price < initialBudget ) {
+                keyboardPrice = price;
+                _budgetValue -= keyboardPrice;
+                usbPrice = mostExpensiveAffordable(usb);
+                if ( usbPrice <= _budgetValue) {
+                    return keyboardPrice + usbPrice;
+                }
+                _budgetValue = initialBudget;
+            }
+        }
+        return -1;
+    }
 }
+
+
