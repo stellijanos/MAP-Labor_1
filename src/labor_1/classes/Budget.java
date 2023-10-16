@@ -49,22 +49,20 @@ public class Budget {
     }
 
 
-    public int buyPcAccessories(Keyboard keyboard, USB usb) {
+    public int totalSpent(Keyboard keyboard, USB usb) {
 
-        int initialBudget = _budgetValue, keyboardPrice, usbPrice;
+        int finalPrice;
+        int maxFinalPrice = -1;
 
-        for ( int price: usb.getPriceList() ) {
-            if (price < initialBudget ) {
-                keyboardPrice = price;
-                _budgetValue -= keyboardPrice;
-                usbPrice = mostExpensiveAffordable(usb);
-                if ( usbPrice <= _budgetValue) {
-                    return keyboardPrice + usbPrice;
+        for ( int keyboardPrice: keyboard.getPriceList() ) {
+            for ( int usbPrice: usb.getPriceList() ) {
+                finalPrice = keyboardPrice + usbPrice;
+                if ( finalPrice <= _budgetValue && maxFinalPrice < finalPrice ) {
+                    maxFinalPrice =  finalPrice;
                 }
-                _budgetValue = initialBudget;
             }
         }
-        return -1;
+        return maxFinalPrice;
     }
 }
 

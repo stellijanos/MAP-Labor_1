@@ -10,7 +10,7 @@ public class TestBudget {
         test_mostCheap();
         test_mostExpensive();
         test_mostExpensiveAffordable();
-        test_buyPcAccessories();
+        test_totalSpent();
     }
 
     private void test_mostCheap() {
@@ -77,8 +77,27 @@ public class TestBudget {
         }
     }
 
-    private void test_buyPcAccessories() {
+    private void test_totalSpent() {
+        Budget budget = new Budget(60);
+        int result = budget.totalSpent(new Keyboard(40, 50, 60), new USB(8, 12));
+        int expected = 58;
+        int unexpected = 72;
 
+        System.out.println(result);
+
+        try {
+            assert result == expected;
+            System.out.println("Test success case - buy pc accessories => successful!");
+        } catch (AssertionError e) {
+            System.out.println("Test success case - buy pc accessories => failed!");
+        }
+
+        try {
+            assert result == unexpected;
+            System.out.println("Test fail case - buy pc accessories => failed!");
+        } catch (AssertionError e) {
+            System.out.println("Test fail case - buy pc accessories => successful!");
+        }
     }
 
 }
