@@ -7,6 +7,10 @@ public class Budget {
 
     private int _budgetValue;
 
+    public Budget(int _budgetValue) {
+        this._budgetValue = _budgetValue;
+    }
+
 
     private int getMinumum(ArrayList<Integer> array) {
         return array.isEmpty() ? -1 : Collections.min(array);
@@ -30,17 +34,15 @@ public class Budget {
         return _budgetValue;
     }
 
-    public void set_budgetValue(int _budgetValue) {
-        this._budgetValue = _budgetValue;
+    public int mostCheap(Keyboard keyboard) {
+        return getMinumum(keyboard.getPriceList());
     }
 
     public int mostExpensive(PcAccessory pcAccessory) {
         return getMaximum(pcAccessory.getPriceList());
     }
 
-    public int mostCheap(Keyboard keyboard) {
-        return getMinumum(keyboard.getPriceList());
-    }
+
 
     public int mostExpensiveAffordable(USB usb) {
         return getMaximum(fiilterPrices(usb.getPriceList()));
