@@ -1,4 +1,4 @@
-package labor_1.classes;
+package org.example;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -65,4 +65,3 @@ public class Budget {
         return maxFinalPrice;
     }
 }
-

@@ -1,3 +1,5 @@
+package org.example;
+
 package labor_1.tests;
 import labor_1.classes.Grades;
 import java.util.ArrayList;

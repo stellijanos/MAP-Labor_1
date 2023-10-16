@@ -1,5 +1,4 @@
-package labor_1.classes;
-
+package org.example;
 
 public class Array {
 

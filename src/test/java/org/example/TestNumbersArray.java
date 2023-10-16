@@ -1,5 +1,5 @@
-package labor_1.tests;
-import labor_1.classes.NumberAsArray;
+package org.example;
+
 public class TestNumbersAsArray {
 
     public void runTests() {

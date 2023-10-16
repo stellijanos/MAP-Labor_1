@@ -1,16 +1,17 @@
-package labor_1.classes;
+package org.example;
 
-public class NumberAsArray {
+public class NumberArray {
 
-    private final int[] _digits;
+    private int[] _digits;
+
+    public NumberArray(int[] _digits) {
+        this._digits = _digits;
+    }
 
     public int[] get() {
         return _digits;
     }
 
-    public NumberAsArray(int...digits) {
-        this._digits = digits;
-    }
 
 
 
@@ -36,11 +37,11 @@ public class NumberAsArray {
 
 
 
-    public int[] add(NumberAsArray other) {
+    public int[] add(NumberArray other) {
         return numberToArray(arrayToNumber(_digits) + arrayToNumber(other.get()));
     }
 
-    public int[] subtract(NumberAsArray other) {
+    public int[] subtract(NumberArray other) {
         return numberToArray(Math.abs(arrayToNumber(_digits) - arrayToNumber(other.get())));
     }
 
@@ -53,4 +54,3 @@ public class NumberAsArray {
     }
 
 }
-

@@ -1,4 +1,4 @@
-package labor_1.classes;
+package org.example;
 
 public class USB extends PcAccessory {
 
@@ -6,3 +6,4 @@ public class USB extends PcAccessory {
         super(prices);
     }
 }
+

@@ -1,6 +1,4 @@
-package labor_1.tests;
-
-import labor_1.classes.*;
+package org.example;
 
 public class TestBudget {
     public void runTests() {
