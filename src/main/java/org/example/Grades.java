@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
-
 public class Grades {
 
     /**
@@ -31,13 +29,21 @@ public class Grades {
         return grade < 38 || round(grade) < 40;
     }
 
+
+    private int numberOfInsufficientGrades(int[] grades) {
+        int result = 0;
+        for (Integer grade: grades)
+            result = isInsufficient(grade) ? result + 1 : result;
+        return result;
+    }
+
     /**
      *
      * @param grades an array with Integer numbers between 0 and 100
      * @return filtered grades by insufficiency
      */
-    public ArrayList<Integer> insufficientGrades(ArrayList<Integer> grades) {
-        ArrayList<Integer> result = new ArrayList<>();
+    public int[] insufficientGrades(int[] grades) {
+        int[] result = new int[]{};
         for (Integer grade: grades)
             if (isInsufficient(grade))
                 result.add(grade);
