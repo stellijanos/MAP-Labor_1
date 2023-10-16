@@ -43,34 +43,43 @@ public class Grades {
      * @return filtered grades by insufficiency
      */
     public int[] insufficientGrades(int[] grades) {
-        int[] result = new int[]{};
+        int[] result = new int[numberOfInsufficientGrades(grades)];
+        int index = 0;
         for (Integer grade: grades)
-            if (isInsufficient(grade))
-                result.add(grade);
+            if (isInsufficient(grade)) {
+                result[index] = grade;
+                index++;
+            }
         return result;
     }
 
-    public int sumOfArrayElements(ArrayList<Integer> array) {
+    public int sumOfArrayElements(int[] array) {
         int sum = 0;
-        for (Integer element: array)
+        for (int element: array)
             sum += element;
         return sum;
     }
 
-    public int averageGrade(ArrayList<Integer> grades) {
-        return grades.isEmpty() ? 0 : sumOfArrayElements(grades) / grades.size();
+    public int averageGrade(int[] grades) throws IllegalAccessException {
+        if (grades.length == 0 ) {
+            throw new IllegalAccessException("Arry is empty!");
+        }
+        return sumOfArrayElements(grades) / grades.length;
     }
 
-    public ArrayList<Integer> roundedGrades(ArrayList<Integer> grades) {
-        ArrayList<Integer> result = new ArrayList<>();
-        for (Integer grade: grades)
-            result.add(round(grade));
+    public int[] roundedGrades(int[] grades) {
+        int[] result = new int[grades.length];
+        for (int i = 0; i < grades.length; i++)
+            result[i] = round(grades[i]);
         return result;
     }
 
-    public int maximalRoundedGrade(ArrayList<Integer> grades) {
+    public int maximalRoundedGrade(int[] grades) throws IllegalAccessException {
         int maximalRoundedGrade = 0;
-        for (Integer grade: grades)
+        if (grades.length == 0) {
+            throw new IllegalAccessException("Array is empty!");
+        }
+        for (int grade: grades)
             if (round(grade) != grade && maximalRoundedGrade < round(grade))
                 maximalRoundedGrade = round(grade);
         return maximalRoundedGrade;
