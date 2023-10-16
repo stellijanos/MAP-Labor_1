@@ -49,9 +49,7 @@ public class Buget {
 
     public int buyPcAccessories(Keyboard keyboard, USB usb) {
 
-        int initialBudget = _budgetValue;
-        int keyboardPrice = 0;
-        int usbPrice = 0;
+        int initialBudget = _budgetValue, keyboardPrice, usbPrice;
 
         for ( int price: usb.getPriceList() ) {
             if (price < initialBudget ) {
@@ -67,5 +65,4 @@ public class Buget {
         return -1;
     }
 }
-
 
