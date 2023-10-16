@@ -34,6 +34,10 @@ public class Buget {
         this._bugetValue = _bugetValue;
     }
 
+    public int mostExpensive(PcAccessory pcAccessory) {
+        return getMaximum(pcAccessory.getPriceList());
+    }
+
     public int mostCheap(Keyboard keyboard) {
         return getMinumum(keyboard.getPriceList());
     }
