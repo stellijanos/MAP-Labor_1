@@ -17,7 +17,7 @@ public class Budget {
     }
 
     private int getMaximum(ArrayList<Integer> array) {
-        return array.isEmpty() ? -1 : Collections.min(array);
+        return array.isEmpty() ? -1 : Collections.max(array);
     }
 
     private ArrayList<Integer> fiilterPrices(ArrayList<Integer> priceList) {

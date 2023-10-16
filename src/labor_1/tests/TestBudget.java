@@ -1,7 +1,6 @@
 package labor_1.tests;
 
-import labor_1.classes.Budget;
-import labor_1.classes.Keyboard;
+import labor_1.classes.*;
 
 public class TestBudget {
     public void runTests() {
@@ -36,8 +35,25 @@ public class TestBudget {
     }
 
     private void test_mostExpensive() {
-    }
+        Budget budget = new Budget(50);
+        int result = budget.mostExpensive(new USB(100, 20, 30, 25, 50));
+        int expected = 100;
+        int unexpected = 50;
 
+        try {
+            assert result == expected;
+            System.out.println("Test success case - most expensive => successful!");
+        } catch (AssertionError e) {
+            System.out.println("Test success case - most expensive => failed!");
+        }
+
+        try {
+            assert result == unexpected;
+            System.out.println("Test fail case - most expensive => failed!");
+        } catch (AssertionError e) {
+            System.out.println("Test fail case - most expensive => successful!");
+        }
+    }
 
 
     private void test_mostExpensiveAffordable() {
