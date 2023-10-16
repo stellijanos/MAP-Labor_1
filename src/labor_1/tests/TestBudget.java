@@ -57,7 +57,24 @@ public class TestBudget {
 
 
     private void test_mostExpensiveAffordable() {
+        Budget budget = new Budget(50);
+        int result = budget.mostExpensiveAffordable(new USB(100, 20, 30, 45, 25, 51));
+        int expected = 45;
+        int unexpected = 100;
 
+        try {
+            assert result == expected;
+            System.out.println("Test success case - most expensive affordable => successful!");
+        } catch (AssertionError e) {
+            System.out.println("Test success case - most expensive affordable => failed!");
+        }
+
+        try {
+            assert result == unexpected;
+            System.out.println("Test fail case - most expensive affordable => failed!");
+        } catch (AssertionError e) {
+            System.out.println("Test fail case - most expensive affordable => successful!");
+        }
     }
 
     private void test_buyPcAccessories() {
