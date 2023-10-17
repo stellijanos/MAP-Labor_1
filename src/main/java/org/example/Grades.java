@@ -1,13 +1,25 @@
 package org.example;
 
+
 public class Grades {
+    private final int[] _grades;
+    public Grades(int...grades) {
+        this._grades = grades;
+    }
+
+    public int[] get_grades() {
+        return _grades;
+    }
 
     /**
      *
      * @param number type of int
      * @return next multiple of 5 after the given number
      */
-    public int nextMultipleOf5(int number) {
+    public int nextMultipleOf5(int number) throws IllegalNumberException {
+        if (number < 0 ) {
+            throw new IllegalNumberException("Grade cannot be lower than 0");
+        }
         return number / 5 * 5 + 5;
     }
 
@@ -16,7 +28,7 @@ public class Grades {
      * @param grade type of int
      * @return rounded up grade if it ends with 3, 4, 8 or 9
      */
-    public int round(int grade) {
+    public int round(int grade) throws IllegalNumberException {
         return  grade != 100 && nextMultipleOf5(grade) - grade < 3 ? nextMultipleOf5(grade) : grade;
     }
 
@@ -25,27 +37,25 @@ public class Grades {
      * @param grade an Integer between 0 and 100
      * @return true if the grade is insufficient or false otherwise
      */
-    public boolean isInsufficient(int grade) {
+    public boolean isInsufficient(int grade) throws IllegalNumberException {
         return grade < 38 || round(grade) < 40;
     }
 
 
-    private int numberOfInsufficientGrades(int[] grades) {
+    private int numberOfInsufficientGrades() throws IllegalNumberException {
         int result = 0;
-        for (Integer grade: grades)
+        for (Integer grade: _grades)
             result = isInsufficient(grade) ? result + 1 : result;
         return result;
     }
 
     /**
-     *
-     * @param grades an array with Integer numbers between 0 and 100
      * @return filtered grades by insufficiency
      */
-    public int[] insufficientGrades(int[] grades) {
-        int[] result = new int[numberOfInsufficientGrades(grades)];
+    public int[] insufficientGrades() throws IllegalNumberException {
+        int[] result = new int[numberOfInsufficientGrades()];
         int index = 0;
-        for (Integer grade: grades)
+        for (Integer grade: _grades)
             if (isInsufficient(grade)) {
                 result[index] = grade;
                 index++;
@@ -60,26 +70,26 @@ public class Grades {
         return sum;
     }
 
-    public int averageGrade(int[] grades) throws IllegalAccessException {
-        if (grades.length == 0 ) {
+    public int averageGrade() throws IllegalAccessException {
+        if (_grades.length == 0 ) {
             throw new IllegalAccessException("Arry is empty!");
         }
-        return sumOfArrayElements(grades) / grades.length;
+        return sumOfArrayElements(_grades) / _grades.length;
     }
 
-    public int[] roundedGrades(int[] grades) {
+    public int[] roundedGrades(int[] grades) throws IllegalNumberException {
         int[] result = new int[grades.length];
         for (int i = 0; i < grades.length; i++)
             result[i] = round(grades[i]);
         return result;
     }
 
-    public int maximalRoundedGrade(int[] grades) throws IllegalAccessException {
+    public int maximalRoundedGrade() throws IllegalAccessException, IllegalNumberException {
         int maximalRoundedGrade = 0;
-        if (grades.length == 0) {
+        if (_grades.length == 0) {
             throw new IllegalAccessException("Array is empty!");
         }
-        for (int grade: grades)
+        for (int grade: _grades)
             if (round(grade) != grade && maximalRoundedGrade < round(grade))
                 maximalRoundedGrade = round(grade);
         return maximalRoundedGrade;
