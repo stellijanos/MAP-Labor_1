@@ -35,17 +35,22 @@ public class GradesTest {
     @Test
     public void test_unexpected_insufficientGrades() {
         Grades grades = new Grades();
-
         assertThrows(EmptyArrayException.class, grades::insufficientGrades);
     }
 
     @Test
-    public void test_expected_round() throws IllegalNumberException, EmptyArrayException {
+    public void test_expected_roundedGrades() throws IllegalNumberException, EmptyArrayException {
         Grades grades = new Grades(0, 10, 21, 32, 43, 54, 65, 76, 87, 98, 100);
         int[] result = grades.roundedGrades();
         int[] expected = {0, 10, 21, 32, 45, 55, 65, 76, 87, 100, 100};
 
         assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void test_unexpected_roundedGrades() {
+        Grades grades = new Grades();
+        assertThrows(EmptyArrayException.class, grades::roundedGrades);
     }
 
 }
