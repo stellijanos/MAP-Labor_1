@@ -16,11 +16,11 @@ public class GradesTest {
     }
 
     @Test
-    public void test_unexpected_nextMultipleOf5() throws IllegalNumberException {
+    public void test_unexpected_nextMultipleOf5() {
         Grades grades = new Grades();
-        int unexpected = -1;
-        assertThrows(IllegalNumberException.class, () -> {
-            grades.nextMultipleOf5(unexpected);
-        });
+        final int unexpected1 = -1;
+        assertThrows(IllegalNumberException.class, () -> grades.nextMultipleOf5(unexpected1));
+        final int unexpected2 = 101;
+        assertThrows(IllegalNumberException.class, () -> grades.nextMultipleOf5(unexpected2));
     }
 }

@@ -20,6 +20,9 @@ public class Grades {
         if (number < 0 ) {
             throw new IllegalNumberException("Grade cannot be lower than 0");
         }
+        if (number > 100) {
+            throw new IllegalNumberException("Grade cannot be higher than 100");
+        }
         return number / 5 * 5 + 5;
     }
 
@@ -72,7 +75,7 @@ public class Grades {
 
     public int averageGrade() throws IllegalAccessException {
         if (_grades.length == 0 ) {
-            throw new IllegalAccessException("Arry is empty!");
+            throw new IllegalAccessException("Array is empty!");
         }
         return sumOfArrayElements(_grades) / _grades.length;
     }
