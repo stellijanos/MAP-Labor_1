@@ -4,7 +4,7 @@ package org.example;
 public class Grades {
     private final int[] _grades;
     public Grades(int...grades) {
-        this._grades = grades;
+        _grades = grades;
     }
 
     public int[] get_grades() {
@@ -55,7 +55,10 @@ public class Grades {
     /**
      * @return filtered grades by insufficiency
      */
-    public int[] insufficientGrades() throws IllegalNumberException {
+    public int[] insufficientGrades() throws IllegalNumberException, EmptyArrayException {
+        if (_grades.length  == 0) {
+            throw new EmptyArrayException("Array is empty");
+        }
         int[] result = new int[numberOfInsufficientGrades()];
         int index = 0;
         for (Integer grade: _grades)
@@ -66,10 +69,10 @@ public class Grades {
         return result;
     }
 
-    public int sumOfArrayElements(int[] array) {
+    public int sumOfGrades() {
         int sum = 0;
-        for (int element: array)
-            sum += element;
+        for (int grade: _grades)
+            sum += grade;
         return sum;
     }
 
@@ -77,13 +80,16 @@ public class Grades {
         if (_grades.length == 0 ) {
             throw new IllegalAccessException("Array is empty!");
         }
-        return sumOfArrayElements(_grades) / _grades.length;
+        return sumOfGrades() / _grades.length;
     }
 
-    public int[] roundedGrades(int[] grades) throws IllegalNumberException {
-        int[] result = new int[grades.length];
-        for (int i = 0; i < grades.length; i++)
-            result[i] = round(grades[i]);
+    public int[] roundedGrades() throws IllegalNumberException, EmptyArrayException {
+        if (_grades.length == 0) {
+            throw new EmptyArrayException("Array is empty");
+        }
+        int[] result = new int[_grades.length];
+        for (int i = 0; i < _grades.length; i++)
+            result[i] = round(_grades[i]);
         return result;
     }
 
