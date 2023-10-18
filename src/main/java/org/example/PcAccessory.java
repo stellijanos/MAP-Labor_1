@@ -1,7 +1,7 @@
 package org.example;
 
 
-public abstract class PcAccessory {
+public class PcAccessory {
 
     protected int[] _priceList;
 
