@@ -9,7 +9,7 @@ public class Array {
 
     public int minimalNumber() throws EmptyArrayException {
         if (_array.length == 0) {
-            throw new EmptyArrayException("Array is emoty!");
+            throw new EmptyArrayException("Array is empty!");
         }
         int minimalNumber = _array[0];
         for (Integer number: _array)
@@ -20,7 +20,7 @@ public class Array {
 
     public int maximalNumber() throws EmptyArrayException {
         if (_array.length == 0) {
-            throw new EmptyArrayException("Array is emoty!");
+            throw new EmptyArrayException("Array is empty!");
         }
         int maximalNumber = _array[0];
         for (Integer number: _array)
