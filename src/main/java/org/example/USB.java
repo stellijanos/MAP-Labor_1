@@ -6,4 +6,3 @@ public class USB extends PcAccessory {
         super(prices);
     }
 }
-

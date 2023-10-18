@@ -1,23 +1,15 @@
 package org.example;
 
-import java.util.ArrayList;
 
 public abstract class PcAccessory {
 
-    protected ArrayList<Integer> _priceList = new ArrayList<>();
+    protected int[] _priceList;
 
     public PcAccessory(int...prices) {
-        for (int price : prices) {
-            if (price >= 0 )
-                _priceList.add(price);
-        }
+        _priceList = prices;
     }
 
-    public ArrayList<Integer> getPriceList() {
+    public int[] getPriceList() {
         return _priceList;
-    }
-
-    public void addToPriceList(int price) {
-        _priceList.add(price);
     }
 }
