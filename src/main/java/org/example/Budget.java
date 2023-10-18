@@ -5,13 +5,13 @@ public class Budget {
 
     private final int _budgetValue;
 
-    public Budget(int _budgetValue) {
-        this._budgetValue = _budgetValue;
+    public Budget(int budgetValue) {
+        this._budgetValue = budgetValue;
     }
 
-    private int getMinumum(int[] array) throws EmptyArrayException {
+    public int getMinimum(int[] array) throws EmptyArrayException {
         if (array.length == 0 ) {
-            throw new EmptyArrayException("Arary is empty!");
+            throw new EmptyArrayException("Array is empty!");
         }
         int minimum = array[0];
         for (int number: array)
@@ -20,9 +20,9 @@ public class Budget {
         return minimum;
     }
 
-    private int getMaximum(int[] array) throws EmptyArrayException {
+    public int getMaximum(int[] array) throws EmptyArrayException {
         if (array.length == 0 ) {
-            throw new EmptyArrayException("Arary is empty!");
+            throw new EmptyArrayException("Array is empty!");
         }
         int maximum = array[0];
         for (int number: array)
@@ -31,7 +31,7 @@ public class Budget {
         return maximum;
     }
 
-    private int nrPricesLessThanBudget(int[] priceList) throws EmptyArrayException {
+    public int nrPricesLessThanBudget(int[] priceList) throws EmptyArrayException {
         if (priceList.length == 0) {
             throw new EmptyArrayException("Array is empty!");
         }
@@ -42,7 +42,7 @@ public class Budget {
         return result;
     }
 
-    private int[] fiilterPrices(int[] priceList) throws EmptyArrayException {
+    public int[] filterPrices(int[] priceList) throws EmptyArrayException {
         if (priceList.length == 0) {
             throw new EmptyArrayException("Array is empty!");
         }
@@ -57,7 +57,7 @@ public class Budget {
     }
 
     public int mostCheap(Keyboard keyboard) throws EmptyArrayException {
-        return getMinumum(keyboard.getPriceList());
+        return getMinimum(keyboard.getPriceList());
     }
 
     public int mostExpensive(PcAccessory pcAccessory) throws EmptyArrayException {
@@ -65,10 +65,15 @@ public class Budget {
     }
 
     public int mostExpensiveAffordable(USB usb) throws EmptyArrayException {
-        return getMaximum(fiilterPrices(usb.getPriceList()));
+        return getMaximum(filterPrices(usb.getPriceList()));
     }
 
-    public int totalSpent(Keyboard keyboard, USB usb) {
+    public int totalSpent(Keyboard keyboard, USB usb) throws EmptyArrayException {
+
+        if (keyboard.getPriceList().length * usb.getPriceList().length == 0) {
+            throw new EmptyArrayException("Array is empty!");
+        }
+
         int finalPrice;
         int maxFinalPrice = -1;
 
