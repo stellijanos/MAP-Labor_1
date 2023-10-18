@@ -55,7 +55,7 @@ public class Grades {
     /**
      * @return filtered grades by insufficiency
      */
-    public int[] insufficientGrades() throws IllegalNumberException, EmptyArrayException {
+    public int[] insufficientGrades() throws EmptyArrayException, IllegalNumberException {
         if (_grades.length  == 0) {
             throw new EmptyArrayException("Array is empty");
         }
@@ -76,14 +76,14 @@ public class Grades {
         return sum;
     }
 
-    public int averageGrade() throws IllegalAccessException {
+    public int averageGrade() throws EmptyArrayException {
         if (_grades.length == 0 ) {
-            throw new IllegalAccessException("Array is empty!");
+            throw new EmptyArrayException("Array is empty!");
         }
         return sumOfGrades() / _grades.length;
     }
 
-    public int[] roundedGrades() throws IllegalNumberException, EmptyArrayException {
+    public int[] roundedGrades() throws EmptyArrayException, IllegalNumberException {
         if (_grades.length == 0) {
             throw new EmptyArrayException("Array is empty");
         }
@@ -93,10 +93,10 @@ public class Grades {
         return result;
     }
 
-    public int maximalRoundedGrade() throws IllegalAccessException, IllegalNumberException {
+    public int maximalRoundedGrade() throws EmptyArrayException, IllegalNumberException {
         int maximalRoundedGrade = 0;
         if (_grades.length == 0) {
-            throw new IllegalAccessException("Array is empty!");
+            throw new EmptyArrayException("Array is empty!");
         }
         for (int grade: _grades)
             if (round(grade) != grade && maximalRoundedGrade < round(grade))

@@ -37,9 +37,15 @@ public class Array {
     }
 
     public int sumWithoutMinimalNumber() throws EmptyArrayException {
+        if (_array.length == 0 ) {
+            throw new EmptyArrayException("Array is empty!");
+        }
         return sum() - minimalNumber();
     }
     public int sumWithoutMaximalNumber() throws EmptyArrayException {
+        if (_array.length == 0 ) {
+            throw new EmptyArrayException("Array is empty!");
+        }
         return sum() - maximalNumber();
     }
 }
