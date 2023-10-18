@@ -7,7 +7,10 @@ public class Array {
         this._array = numbers;
     }
 
-    public int minimalNumber() {
+    public int minimalNumber() throws EmptyArrayException {
+        if (_array.length == 0) {
+            throw new EmptyArrayException("Array is emoty!");
+        }
         int minimalNumber = _array[0];
         for (Integer number: _array)
             if (minimalNumber > number)
@@ -15,7 +18,10 @@ public class Array {
         return minimalNumber;
     }
 
-    public int maximalNumber() {
+    public int maximalNumber() throws EmptyArrayException {
+        if (_array.length == 0) {
+            throw new EmptyArrayException("Array is emoty!");
+        }
         int maximalNumber = _array[0];
         for (Integer number: _array)
             if (maximalNumber < number)
@@ -30,10 +36,10 @@ public class Array {
         return sum;
     }
 
-    public int sumWithoutMinimalNumber() {
+    public int sumWithoutMinimalNumber() throws EmptyArrayException {
         return sum() - minimalNumber();
     }
-    public int sumWithoutMaximalNumber() {
+    public int sumWithoutMaximalNumber() throws EmptyArrayException {
         return sum() - maximalNumber();
     }
 }
