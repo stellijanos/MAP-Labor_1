@@ -9,7 +9,6 @@ public class Budget {
         this._budgetValue = _budgetValue;
     }
 
-
     private int getMinumum(int[] array) throws EmptyArrayException {
         if (array.length == 0 ) {
             throw new EmptyArrayException("Arary is empty!");
@@ -55,10 +54,6 @@ public class Budget {
                 index ++;
             }
         return result;
-    }
-
-    public int get_budgetValue() {
-        return _budgetValue;
     }
 
     public int mostCheap(Keyboard keyboard) throws EmptyArrayException {
