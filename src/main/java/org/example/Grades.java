@@ -11,11 +11,6 @@ public class Grades {
         return _grades;
     }
 
-    /**
-     *
-     * @param number type of int
-     * @return next multiple of 5 after the given number
-     */
     public int nextMultipleOf5(int number) throws IllegalNumberException {
         if (number < 0 ) {
             throw new IllegalNumberException("Grade cannot be lower than 0");
@@ -26,17 +21,11 @@ public class Grades {
         return number / 5 * 5 + 5;
     }
 
-    /**
-     *
-     * @param grade type of int
-     * @return rounded up grade if it ends with 3, 4, 8 or 9
-     */
     public int round(int grade) throws IllegalNumberException {
         return  grade != 100 && nextMultipleOf5(grade) - grade < 3 ? nextMultipleOf5(grade) : grade;
     }
 
     /**
-     *
      * @param grade an Integer between 0 and 100
      * @return true if the grade is insufficient or false otherwise
      */
