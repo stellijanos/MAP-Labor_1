@@ -15,9 +15,7 @@ public class BigArrayNumber {
     public void shiftValues(int digit) {
         int[] result = new int[_numberArray.length+1];
         result[0] = digit;
-        for (int i = 0; i < _numberArray.length; i++) {
-            result[i+1] = _numberArray[i];
-        }
+        System.arraycopy(_numberArray, 0, result, 1, _numberArray.length);
         _numberArray = result;
     }
 
