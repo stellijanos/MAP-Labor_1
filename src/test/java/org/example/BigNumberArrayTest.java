@@ -23,6 +23,6 @@ public class BigNumberArrayTest {
         assertThrows(EmptyArrayException.class, ()-> bigArrayNumber_1.add(bigArrayNumber_1));
 
         BigArrayNumber bigArrayNumber_2 = new BigArrayNumber(1);
-        assertThrows(Exception.class, ()-> bigArrayNumber_1.add(new BigArrayNumber(1,2)));
+        assertThrows(Exception.class, ()-> bigArrayNumber_2.add(new BigArrayNumber(1,2)));
     }
 }
