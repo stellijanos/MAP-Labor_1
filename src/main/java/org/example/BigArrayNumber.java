@@ -1,7 +1,4 @@
 package org.example;
-
-import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
-
 public class BigArrayNumber {
 
     private int[] _numberArray;
@@ -14,7 +11,17 @@ public class BigArrayNumber {
         return _numberArray;
     }
 
-    public void add (BigArrayNumber other) throws Exception {
+
+    public void shiftValues(int digit) {
+        int[] result = new int[_numberArray.length+1];
+        result[0] = digit;
+        for (int i = 0; i < _numberArray.length; i++) {
+            result[i+1] = _numberArray[i];
+        }
+        _numberArray = result;
+    }
+
+    public int[] add (BigArrayNumber other) throws Exception {
         if (_numberArray.length == 0) {
             throw new EmptyArrayException("Array is empty");
         }
@@ -22,26 +29,18 @@ public class BigArrayNumber {
             throw new Exception("Array lengths do not match");
         }
 
-        int remainder;
+        int remainder = 0;
         int newDigit;
-        for (int i = _numberArray.length; true; i--) {
-            remainder = 0;
+        for (int i = _numberArray.length-1; i>=0; i--) {
             newDigit = _numberArray[i] + other.get_numberArray()[i];
             _numberArray[i] = newDigit % 10 + remainder;
-            if (newDigit - 10 > 0) {
-                remainder = 1;
-            }
+            remainder = newDigit / 10;
         }
 
         if (remainder > 0) {
-            int[] finalResult = new int[_numberArray.length+1];
-            finalResult[0] = 1;
-            for ( int i = 0; i < _numberArray.length; i++) {
-                finalResult[i+1] = _numberArray[i];
-            }
-
-        } else {
-
+            shiftValues(1);
         }
+
+        return _numberArray;
     }
 }
