@@ -91,7 +91,24 @@ public class BigArrayNumber {
         result[0] *= hasMinus1;
 
         return result;
+    }
 
-//        return add(new BigArrayNumber(otherNumberArray));
+    public int[] multiply(int digit) throws EmptyArrayException {
+        if (_numberArray.length == 0) {
+            throw new EmptyArrayException("Array is empty");
+        }
+        int remainder = 0;
+        for (int i = _numberArray.length - 1; i >= 0; i--) {
+            int multiplication = _numberArray[i] * digit + remainder;
+            remainder = multiplication / 10;
+            _numberArray[i] = multiplication % 10;
+        }
+        if (remainder > 0) {
+            int[] result = new int[_numberArray.length+1];
+            result[0] = remainder;
+            System.arraycopy(_numberArray, 0, result, 1, _numberArray.length);
+            _numberArray = result;
+        }
+        return _numberArray;
     }
 }
