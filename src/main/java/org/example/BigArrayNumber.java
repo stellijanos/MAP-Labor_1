@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.Arrays;
-
 public class BigArrayNumber {
 
     private int[] _numberArray;
