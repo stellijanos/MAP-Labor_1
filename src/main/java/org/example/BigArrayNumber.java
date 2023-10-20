@@ -111,4 +111,37 @@ public class BigArrayNumber {
         }
         return _numberArray;
     }
+
+    public int[] addDigit(int[] array, int digit) {
+        int[] result = new int[array.length + 1];
+        System.arraycopy(array, 0, result, 0, array.length);
+        result[result.length-1] = digit;
+        return result;
+    }
+
+    public int[] divide(int divider) throws Exception {
+        if (_numberArray.length == 0) {
+            throw new EmptyArrayException("Array is empty");
+        }
+        if (divider == 0 ) {
+            throw new Exception("ZeroDivisionError");
+        }
+
+        int[] quotient = new int[0];
+        int remainder = 0;
+
+        for (int j : _numberArray) {
+            int dividend = j + remainder * 10;
+            quotient = addDigit(quotient, dividend / divider);
+            remainder = dividend % divider;
+        }
+        if (quotient[0] == 0 ) {
+            int[] result = new int[quotient.length-1];
+            System.arraycopy(quotient, 1, result, 0, quotient.length-1);
+            _numberArray = result;
+        } else {
+            _numberArray = quotient;
+        }
+        return _numberArray;
+    }
 }

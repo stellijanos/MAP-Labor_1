@@ -64,4 +64,20 @@ public class BigNumberArrayTest {
         BigArrayNumber bigArrayNumber = new BigArrayNumber();
         assertThrows(EmptyArrayException.class, ()-> bigArrayNumber.multiply(2));
     }
+
+    @Test
+    public void test_expected_divide() throws Exception {
+        BigArrayNumber bigArrayNumber = new BigArrayNumber(1,2,3);
+        int[] result = bigArrayNumber.divide(5);
+        assertArrayEquals(new int[]{2, 4}, result);
+    }
+
+    @Test
+    public void test_unexpected_divide() {
+        BigArrayNumber bigArrayNumber_1 = new BigArrayNumber();
+        assertThrows(EmptyArrayException.class, ()-> bigArrayNumber_1.divide(2));
+
+        BigArrayNumber bigArrayNumber_2 = new BigArrayNumber(1,2,3,4,5);
+        assertThrows(Exception.class, ()-> bigArrayNumber_2.divide(0));
+    }
 }
