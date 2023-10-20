@@ -1,4 +1,7 @@
 package org.example;
+
+import java.util.Arrays;
+
 public class BigArrayNumber {
 
     private int[] _numberArray;
@@ -40,5 +43,21 @@ public class BigArrayNumber {
         }
 
         return _numberArray;
+    }
+
+    public int[] subtract(BigArrayNumber other) throws Exception {
+        if (_numberArray.length == 0) {
+            throw new EmptyArrayException("Array is empty");
+        }
+        if (_numberArray.length != other.get_numberArray().length) {
+            throw new Exception("Array lengths do not match");
+        }
+        int[] otherNumberArray = new int[other.get_numberArray().length];
+
+        System.arraycopy(_numberArray, 0, otherNumberArray,0 , _numberArray.length);
+        otherNumberArray[0] = - otherNumberArray[0];
+        System.out.println(Arrays.toString(_numberArray));
+        System.out.println(Arrays.toString(otherNumberArray));
+        return add(new BigArrayNumber(otherNumberArray));
     }
 }
